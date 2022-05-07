@@ -1,0 +1,27 @@
+<MovieTweet>:
+	BoxLayout:
+		orientation: 'vertical'
+		Label:
+			text: 'Movie info tweet App'
+			font_size: 30
+		Button:
+			text: 'POST'
+	        size_hint: .5, .5
+	        pos_hint: {'center_x': 0.5}
+	        on_press: root.pressed()
+		Button:
+			text: 'GET'
+			size_hint: .5, .5
+	        pos_hint: {'center_x': 0.5}
+	    TextInput:
+	    	id: input
+			size_hint: .5, .5
+	        pos_hint: {'center_x': 0.5}
+		Button:
+			text: 'text'
+			size_hint: .5, .5
+	        pos_hint: {'center_x': 0.5}
+	        on_press: root.text_out()
+		Label:
+			id: textoutput
+			text: ''
