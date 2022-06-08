@@ -1,27 +1,137 @@
-<MovieTweet>:
+WindowManager:
+	Mainmenu:
+	Postmenu:
+	Getmenu:
+	Postmenu_detail:
+	Getmenu_detail:
+
+
+<Mainmenu>:
+	name: 'home'
+
 	BoxLayout:
 		orientation: 'vertical'
+		padding: 50
+		spacing: 50
 		Label:
 			text: 'Movie info tweet App'
 			font_size: 30
 		Button:
-			text: 'POST'
+			text: 'POST into'
 	        size_hint: .5, .5
 	        pos_hint: {'center_x': 0.5}
-	        on_press: root.pressed()
+	        on_press: app.root.current = 'post'
 		Button:
-			text: 'GET'
+			text: 'GET info'
 			size_hint: .5, .5
 	        pos_hint: {'center_x': 0.5}
-	    TextInput:
-	    	id: input
-			size_hint: .5, .5
-	        pos_hint: {'center_x': 0.5}
-		Button:
-			text: 'text'
-			size_hint: .5, .5
-	        pos_hint: {'center_x': 0.5}
-	        on_press: root.text_out()
+	        on_press: app.root.current = 'get'
+
+<Postmenu>:
+	name: 'post'
+
+	GridLayout:
+		padding: 50
+		spacing: 50
+		cols: 1
 		Label:
-			id: textoutput
-			text: ''
+			text: 'Post info tweet'
+
+		GridLayout:
+			cols: 2
+		
+			Label:
+				text: 'Title'
+				size_hint: .5, .5
+		    TextInput:
+				size_hint: .5, .5
+				multiline: False
+			Label:
+				text: 'Year'
+				size_hint: .5, .5
+		    TextInput:
+				size_hint: .5, .5
+				multiline: False
+		Button:
+			text: 'submit'
+			size_hint: .5, .5
+	        pos_hint: {'center_x': 0.5}
+	        on_press: app.root.current = 'post_second'
+
+<Postmenu_detail>:
+	name: 'post_second'
+
+	BoxLayout:
+		orientation: 'vertical'
+		padding: 50
+		spacing: 50
+		Label:
+			text: 'Title'
+			size_hint: .5, .5
+		Label:
+			text: 'Year'
+			size_hint: .5, .5
+		Button:
+			text: 'submit'
+			size_hint: .5, .5
+	        pos_hint: {'center_x': 0.5}
+	        on_press: app.root.current = 'home'
+
+
+<Getmenu>:
+	name: 'get'
+
+	GridLayout:
+		padding: 50
+		spacing: 50
+		cols: 1
+
+		GridLayout:
+			rows: 2
+			Label:
+				text: 'Get info tweet'
+			Label:
+				text: 'Input year if you want see specify year.'
+
+		GridLayout:
+			cols: 2
+			Label:
+				text: 'Year'
+				size_hint: .5, .5
+		    TextInput:
+				size_hint: .5, .5
+				multiline: False
+		Button:
+			text: 'submit'
+			size_hint: .5, .5
+	        pos_hint: {'center_x': 0.5}
+	        on_press:
+	        	app.root.current = 'get_second'
+
+<Getmenu_detail>:
+	name: 'get_second'
+
+	BoxLayout:
+		padding: 50
+		spacing: 50
+		orientation: 'vertical'
+
+		Label:
+			text: 'Get info Detail'	
+
+		ScrollView:
+			
+			Label:
+				id: text_out 
+				text: root.gettitle()
+				size_hint_y: None
+				height: self.texture_size[1] # scroll from top of text
+				text_size: self.width, None
+
+		Button:
+			text: 'submit'
+			size_hint: .5, .5
+	        pos_hint: {'center_x': 0.5}
+	        on_press: app.root.current = 'home'
+
+
