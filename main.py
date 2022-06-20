@@ -6,6 +6,12 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 #from kivy.uix.button import Button
 #from kivy.uix.widget import Widget
 from kivy.config import Config
+import os
+import sys
+
+sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
+
+import src.gettw
 
 class Mainmenu(Screen):
     def pressed(self):
@@ -21,6 +27,16 @@ class Postmenu(Screen):
 
 class Getmenu(Screen):
 
+    def gettitle(self):
+        #with open('movietext.txt', 'r') as f:
+        #   self.text = f.read()
+        self.text = 'movies'
+        #for movie in src.gettw.main():
+        #    self.text += ' '.join([str(movie['posted_date']), movie['title'], '\n'])
+
+        return self.text
+        print(self.ids.gettitle)
+
     pass
 
 class Postmenu_detail(Screen):
@@ -28,10 +44,9 @@ class Postmenu_detail(Screen):
 
 class Getmenu_detail(Screen):
 
-    def gettitle(self):
-        with open('movietext.txt', 'r') as f:
-            self.text = f.read()
-            return self.text
+    #def gets(self):
+    #  self.ids.text_out.text = Getmenu().gettitle()
+    #  return self.ids.text_out.text
 
     pass
 

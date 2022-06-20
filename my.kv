@@ -11,8 +11,8 @@ WindowManager:
 
 	BoxLayout:
 		orientation: 'vertical'
-		padding: 50
-		spacing: 50
+		padding: 30
+		spacing: 30
 		Label:
 			text: 'Movie info tweet App'
 			font_size: 30
@@ -31,13 +31,14 @@ WindowManager:
 	name: 'post'
 
 	GridLayout:
-		padding: 50
-		spacing: 50
+		padding: 30
+		spacing: 30
 		cols: 1
 		Label:
-			text: 'Post info tweet'
+			text: 'Post info tweet\n\nInput a movie title'
 
 		GridLayout:
+			spacing: 30
 			cols: 2
 		
 			Label:
@@ -47,7 +48,7 @@ WindowManager:
 				size_hint: .5, .5
 				multiline: False
 			Label:
-				text: 'Year'
+				text: 'Year (Optional)'
 				size_hint: .5, .5
 		    TextInput:
 				size_hint: .5, .5
@@ -63,16 +64,21 @@ WindowManager:
 
 	BoxLayout:
 		orientation: 'vertical'
-		padding: 50
-		spacing: 50
+		padding: 30
+		spacing: 30
+		Label:
+			text: 'Post the following contents'
+			size_hint: .5, .5
 		Label:
 			text: 'Title'
 			size_hint: .5, .5
-		Label:
-			text: 'Year'
-			size_hint: .5, .5
 		Button:
 			text: 'submit'
+			size_hint: .5, .5
+	        pos_hint: {'center_x': 0.5}
+	        # on_press: app.root.current = 'home'
+		Button:
+			text: 'cancel'
 			size_hint: .5, .5
 	        pos_hint: {'center_x': 0.5}
 	        on_press: app.root.current = 'home'
@@ -82,8 +88,8 @@ WindowManager:
 	name: 'get'
 
 	GridLayout:
-		padding: 50
-		spacing: 50
+		padding: 30
+		spacing: 30
 		cols: 1
 
 		GridLayout:
@@ -94,6 +100,7 @@ WindowManager:
 				text: 'Input year if you want see specify year.'
 
 		GridLayout:
+			padding: 30
 			cols: 2
 			Label:
 				text: 'Year'
@@ -102,18 +109,20 @@ WindowManager:
 				size_hint: .5, .5
 				multiline: False
 		Button:
+			id: 'gettitle'
 			text: 'submit'
 			size_hint: .5, .5
 	        pos_hint: {'center_x': 0.5}
 	        on_press:
 	        	app.root.current = 'get_second'
+	        	root.gettitle()
 
 <Getmenu_detail>:
 	name: 'get_second'
 
 	BoxLayout:
-		padding: 50
-		spacing: 50
+		padding: 30
+		spacing: 30
 		orientation: 'vertical'
 
 		Label:
@@ -123,13 +132,13 @@ WindowManager:
 			
 			Label:
 				id: text_out 
-				text: root.gettitle()
+				text: ''
 				size_hint_y: None
 				height: self.texture_size[1] # scroll from top of text
 				text_size: self.width, None
 
 		Button:
-			text: 'submit'
+			text: 'return'
 			size_hint: .5, .5
 	        pos_hint: {'center_x': 0.5}
 	        on_press: app.root.current = 'home'
