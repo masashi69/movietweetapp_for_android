@@ -30,9 +30,11 @@ class Getmenu(Screen):
     def gettitle(self):
         #with open('movietext.txt', 'r') as f:
         #   self.text = f.read()
-        self.text = ''
-        for movie in src.gettw.main():
-            self.text += ' '.join([str(movie['posted_date']), movie['title'], '\n'])
+        self.text = 'movie'
+        if self.ids.getyear.text != '':
+            self.text += self.ids.getyear.text
+        #for movie in src.gettw.main():
+        #    self.text += ' '.join([str(movie['posted_date']), movie['title'], '\n'])
 
         self.ids.movie_o.text = self.text
         return self.ids.movie_o.text
@@ -43,11 +45,6 @@ class Postmenu_detail(Screen):
     pass
 
 class Getmenu_detail(Screen):
-
-    def gets(self):
-      self.ids.text_out.text = Getmenu().gettitle()
-      return self.ids.text_out.text
-
     pass
 
 class WindowManager(ScreenManager):

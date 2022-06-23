@@ -105,6 +105,7 @@ WindowManager:
 				text: 'Year (optional)'
 				size_hint: .5, .5
 		    TextInput:
+		    	id: getyear
 				size_hint: .5, .5
 				multiline: False
 		GridLayout:
@@ -120,7 +121,7 @@ WindowManager:
 		ScrollView:
 			
 			Label:
-				id: 'movie_o'
+				id: movie_o
 				text: ''
 				size_hint_y: None
 				height: self.texture_size[1] # scroll from top of text
