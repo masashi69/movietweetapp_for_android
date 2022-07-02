@@ -5,7 +5,6 @@ WindowManager:
 	Postmenu:
 	Getmenu:
 	Postmenu_detail:
-	Getmenu_detail:
 
 
 <Mainmenu>:
@@ -89,37 +88,34 @@ WindowManager:
 <Getmenu>:
 	name: 'get'
 
-	GridLayout:
+	BoxLayout:
+		orientation: 'vertical'
 		padding: 10
 		spacing: 10
-		cols: 1
 
-		GridLayout:
-			rows: 1
-			Label:
-				text: 'Get info tweet.\nInput year if you want see specify year.'
+		Label:
+			text: 'Get info tweet.\nInput year if you want see specify year.'
+			size_hint: 1 , .1
 
-		GridLayout:
-			cols: 2
-			Label:
-				text: 'Year (optional)'
-				size_hint: .5, .5
-		    TextInput:
-		    	id: getyear
-				size_hint: .5, .5
-				multiline: False
-		GridLayout:
-			rows: 1
-			Button:
-				text: 'submit'
-				size_hint: .1, .1
-				height: .1 
-		        pos_hint: {'center_x': 0.5}
-		        on_press:
-		        	#app.root.current = 'get_second'
-		        	root.gettitle()
-		ScrollView:
-			
+		Label:
+			text: 'Year (optional)'
+	        pos_hint: {'center_x': 0.5}
+			size_hint: None, .1
+	    TextInput:
+	    	id: getyear
+	        pos_hint: {'center_x': 0.5}
+			size_hint: None, .1
+			multiline: False
+
+		Button:
+			text: 'submit'
+			size_hint: .5, .2
+	        pos_hint: {'center_x': 0.5}
+	        on_press:
+	        	#app.root.current = 'get_second'
+	        	root.gettitle()
+
+		ScrollView:			
 			Label:
 				id: movie_o
 				text: ''
@@ -127,29 +123,9 @@ WindowManager:
 				height: self.texture_size[1] # scroll from top of text
 				text_size: self.width, None
 
-<Getmenu_detail>:
-	name: 'get_second'
-
-	BoxLayout:
-		padding: 30
-		spacing: 30
-		orientation: 'vertical'
-
-		Label:
-			text: 'Get info Detail'	
-
-		ScrollView:
-			
-			Label:
-				id: c
-				text: 
-				size_hint_y: None
-				height: self.texture_size[1] # scroll from top of text
-				text_size: self.width, None
-
 		Button:
 			text: 'return'
-			size_hint: .5, .5
+			size_hint: .5, .2
 	        pos_hint: {'center_x': 0.5}
 	        on_press: app.root.current = 'home'
 
