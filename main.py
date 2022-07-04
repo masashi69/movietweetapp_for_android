@@ -28,13 +28,17 @@ class Postmenu(Screen):
 class Getmenu(Screen):
 
     def gettitle(self):
+        self.text = ''
+        #if self.ids.getyear.text != '':
+        #    self.text += self.ids.getyear.text
+        if self.ids.getyear.text != '':
+            src.gettw.args.year = int(self.ids.getyear.text)
+
+        for movie in src.gettw.main():
+            self.text += ' '.join([str(movie['posted_date']), movie['title'], '\n'])
+
         #with open('movietext.txt', 'r') as f:
         #   self.text = f.read()
-        self.text = 'movie'
-        if self.ids.getyear.text != '':
-            self.text += self.ids.getyear.text
-        #for movie in src.gettw.main():
-        #    self.text += ' '.join([str(movie['posted_date']), movie['title'], '\n'])
 
         self.ids.movie_o.text = self.text
         return self.ids.movie_o.text
@@ -52,10 +56,10 @@ class WindowManager(ScreenManager):
 
 kv = Builder.load_file('my.kv')
 
-class MyApp(App):
+class MovieinfoApp(App):
     def build(self):
 
         return kv
 
 if __name__ == '__main__':
-    MyApp().run()
+    MovieinfoApp().run()
